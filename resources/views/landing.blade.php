@@ -8,11 +8,12 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Acme', sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -65,7 +66,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold text-primary" href="#">
-                <img src="{{ asset($settings['site_logo'] ?? 'assets/img/logo.png') }}" alt="Logo" height="40"
+                <img src="{{ asset($settings['site_logo'] ?? 'img/logo.png') }}" alt="Logo" height="40"
                     class="me-2">
                 {{ $settings['site_name'] ?? 'EduBot' }}
             </a>
@@ -80,18 +81,18 @@
                         <div class="dropdown-menu mega-menu border-0 shadow">
                             <div class="row">
                                 @forelse($programs as $prog)
-                                    <div class="col-12 mb-2">
-                                        <a class="dropdown-item d-flex align-items-center" href="#">
-                                            <img src="{{ asset($prog->thumbnail ?? 'assets/img/default-prog.png') }}"
-                                                width="40" class="rounded me-2">
-                                            <div>
-                                                <div class="fw-bold">{{ $prog->nama_program }}</div>
-                                                <small class="text-muted">{{ Str::limit($prog->deskripsi, 30) }}</small>
-                                            </div>
-                                        </a>
-                                    </div>
+                                <div class="col-12 mb-2">
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <img src="{{ asset($prog->thumbnail ?? 'assets/img/default-prog.png') }}"
+                                            width="40" class="rounded me-2">
+                                        <div>
+                                            <div class="fw-bold">{{ $prog->nama_program }}</div>
+                                            <small class="text-muted">{{ Str::limit($prog->deskripsi, 30) }}</small>
+                                        </div>
+                                    </a>
+                                </div>
                                 @empty
-                                    <div class="px-3">Belum ada program</div>
+                                <div class="px-3">Belum ada program</div>
                                 @endforelse
                             </div>
                         </div>
@@ -123,7 +124,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="{{ asset($settings['hero_image'] ?? 'assets/img/hero.gif') }}" alt="Hero"
+                    <img src="{{ asset($settings['hero_image'] ?? 'img/hero.gif') }}" alt="Hero"
                         class="img-fluid rounded shadow-sm">
                 </div>
             </div>
@@ -138,19 +139,19 @@
             </div>
             <div class="row g-4">
                 @forelse($programs_grid as $pg)
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 shadow-sm transition">
-                            <img src="{{ asset($pg->thumbnail ?? 'assets/img/default-prog.png') }}" class="card-img-top"
-                                alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">{{ $pg->nama_program }}</h5>
-                                <p class="card-text text-muted">{{ Str::limit($pg->deskripsi, 100) }}</p>
-                                <a href="#" class="btn btn-outline-primary w-100">Lihat Detail</a>
-                            </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm transition">
+                        <img src="{{ asset($pg->thumbnail ?? 'assets/img/default-prog.png') }}" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">{{ $pg->nama_program }}</h5>
+                            <p class="card-text text-muted">{{ Str::limit($pg->deskripsi, 100) }}</p>
+                            <a href="#" class="btn btn-outline-primary w-100">Lihat Detail</a>
                         </div>
                     </div>
+                </div>
                 @empty
-                    <div class="col-12 text-center text-muted">Data program belum tersedia.</div>
+                <div class="col-12 text-center text-muted">Data program belum tersedia.</div>
                 @endforelse
             </div>
         </div>
@@ -161,12 +162,12 @@
             <h2 class="text-center fw-bold mb-5">Galeri Kegiatan</h2>
             <div class="row g-3">
                 @forelse($galleries as $g)
-                    <div class="col-md-3">
-                        <img src="{{ asset($g->file_foto) }}" class="img-fluid gallery-img w-100"
-                            alt="{{ $g->judul_foto }}">
-                    </div>
+                <div class="col-md-3">
+                    <img src="{{ asset($g->file_foto) }}" class="img-fluid gallery-img w-100"
+                        alt="{{ $g->judul_foto }}">
+                </div>
                 @empty
-                    <div class="col-12 text-center text-muted">Belum ada foto kegiatan.</div>
+                <div class="col-12 text-center text-muted">Belum ada foto kegiatan.</div>
                 @endforelse
             </div>
         </div>
@@ -177,23 +178,23 @@
             <h2 class="text-center fw-bold mb-5">Apa Kata Siswa Kami</h2>
             <div class="row g-4">
                 @forelse($testimonials as $t)
-                    <div class="col-md-4">
-                        <div class="card h-100 border-0 bg-light p-3">
-                            <div class="card-body">
-                                <p class="fst-italic text-secondary">"{{ $t->isi_testimoni }}"</p>
-                                <div class="d-flex align-items-center mt-4">
-                                    <img src="{{ asset($t->user->foto_profil ?? 'assets/img/user.png') }}"
-                                        class="rounded-circle me-3" width="50" height="50">
-                                    <div>
-                                        <h6 class="mb-0 fw-bold">{{ $t->user->nama_lengkap }}</h6>
-                                        <small class="text-muted">Siswa Aktif</small>
-                                    </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 bg-light p-3">
+                        <div class="card-body">
+                            <p class="fst-italic text-secondary">"{{ $t->isi_testimoni }}"</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <img src="{{ asset($t->user->foto_profil ?? 'assets/img/user.png') }}"
+                                    class="rounded-circle me-3" width="50" height="50">
+                                <div>
+                                    <h6 class="mb-0 fw-bold">{{ $t->user->nama_lengkap }}</h6>
+                                    <small class="text-muted">Siswa Aktif</small>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
                 @empty
-                    <div class="col-12 text-center text-muted">Belum ada testimoni.</div>
+                <div class="col-12 text-center text-muted">Belum ada testimoni.</div>
                 @endforelse
             </div>
         </div>
