@@ -10,13 +10,27 @@
 
 <div class="d-flex justify-content-center mb-4">
     <div class="btn-group p-1 bg-white shadow-sm rounded-pill">
-        <a href="{{ route('enrollments.index', ['status' => 'pending']) }}"
-            class="btn {{ $status == 'pending' ? 'btn-warning' : 'btn-light' }} rounded-pill px-4">
-            Calon Siswa Baru
-        </a>
-        <a href="{{ route('enrollments.index', ['status' => 'lunas']) }}"
-            class="btn {{ $status == 'lunas' ? 'btn-success' : 'btn-light' }} rounded-pill px-4">
-            Siswa Terdaftar
+        <a href="{{ route('enrollments.index', ['status' => 'pending']) }}" class="btn {{ $status == 'pending' ? 'btn-warning' : 'btn-light' }} rounded-pill px-4">Pending</a>
+        <a href="{{ route('enrollments.index', ['status' => 'lunas']) }}" class="btn {{ $status == 'lunas' ? 'btn-success' : 'btn-light' }} rounded-pill px-4">Siswa Aktif</a>
+        <a href="{{ route('enrollments.index', ['status' => 'selesai']) }}" class="btn {{ $status == 'selesai' ? 'btn-secondary' : 'btn-light' }} rounded-pill px-4">Selesai</a>
+    </div>
+</div>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form action="{{ route('enrollments.index') }}" method="GET" class="d-flex align-items-center gap-2">
+        <input type="hidden" name="status" value="{{ $status }}">
+        <label class="small fw-bold">Tampilkan:</label>
+        <select name="per_page" onchange="this.form.submit()" class="form-select form-select-sm" style="width: 80px;">
+            <option value="10" {{ $perPage == 10 ? 'selected' : '' }}>10</option>
+            <option value="20" {{ $perPage == 20 ? 'selected' : '' }}>20</option>
+            <option value="100" {{ $perPage == 100 ? 'selected' : '' }}>100</option>
+            <option value="all" {{ $perPage == 'all' ? 'selected' : '' }}>All</option>
+        </select>
+    </form>
+
+    <div class="btn-group">
+        <a href="{{ route('enrollments.export', ['status' => $status, 'limit' => $perPage]) }}" class="btn btn-outline-success btn-sm">
+            <i class="fas fa-file-excel me-1"></i> Export ke Excel ({{ strtoupper($perPage) }})
         </a>
     </div>
 </div>
@@ -70,6 +84,11 @@
                             @if($status == 'pending')
                             <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalLunas{{ $e->id }}">
                                 Konfirmasi Lunas
+                            </button>
+                            @endif
+                            @if($status == 'lunas')
+                            <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#modalSelesai{{ $e->id }}">
+                                Selesaikan
                             </button>
                             @endif
                             <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus{{ $e->id }}">

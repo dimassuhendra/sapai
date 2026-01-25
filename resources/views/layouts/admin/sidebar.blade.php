@@ -19,7 +19,7 @@
             <i class="fas fa-file-video"></i> Materi
         </a>
         <a href="{{ route('enrollments.index') }}" class="list-group-item">
-            <i class="fas fa-user-plus"></i> Pendaftaran
+            <i class="fas fa-user-plus"></i> Data Siswa
         </a>
 
         <div class="menu-label">Konten</div>

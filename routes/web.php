@@ -34,5 +34,6 @@ Route::prefix('admin')->group(function () {
     Route::get('enrollments', [EnrollmentController::class, 'index'])->name('enrollments.index');
     Route::put('enrollments/{id}/update-status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.updateStatus');
     Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
+    Route::get('enrollments/export', [EnrollmentController::class, 'export'])->name('enrollments.export');
 
     });
