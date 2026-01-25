@@ -7,26 +7,35 @@
     </div>
 
     <div class="list-group list-group-flush mt-3 px-3">
-        <a href="#" class="list-group-item active">
+        <a href="#" class="list-group-item {{ request()->is('dashboard*') ? 'active' : '' }}">
             <i class="fas fa-tachometer-alt"></i> Dashboard
         </a>
 
         <div class="menu-label">Akademik</div>
-        <a href="{{ route('programs.index') }}" class="list-group-item">
+
+        <a href="{{ route('programs.index') }}"
+            class="list-group-item {{ request()->routeIs('programs.*') ? 'active' : '' }}">
             <i class="fas fa-book"></i> Program Belajar
         </a>
-        <a href="{{ route('materials.index') }}" class="list-group-item">
+
+        <a href="{{ route('materials.index') }}"
+            class="list-group-item {{ request()->routeIs('materials.*') ? 'active' : '' }}">
             <i class="fas fa-file-video"></i> Materi
         </a>
-        <a href="{{ route('enrollments.index') }}" class="list-group-item">
+
+        <a href="{{ route('enrollments.index') }}"
+            class="list-group-item {{ request()->routeIs('enrollments.*') ? 'active' : '' }}">
             <i class="fas fa-user-plus"></i> Data Siswa
         </a>
 
         <div class="menu-label">Konten</div>
-        <a href="{{ route('galleries.index') }}" class="list-group-item">
+
+        <a href="{{ route('galleries.index') }}"
+            class="list-group-item {{ request()->routeIs('galleries.*') ? 'active' : '' }}">
             <i class="fas fa-images"></i> Galeri
         </a>
-        <a href="#" class="list-group-item">
+
+        <a href="#" class="list-group-item {{ request()->is('settings*') ? 'active' : '' }}">
             <i class="fas fa-cogs"></i> Pengaturan Web
         </a>
 

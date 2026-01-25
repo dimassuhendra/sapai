@@ -29,7 +29,7 @@
                         @if($hasPhoto)
                         <img src="{{ asset('storage/' . auth()->user()->foto_profil) }}" class="profile-img border border-2 border-white">
                         @else
-                        <div class="avatar-initial bg-white text-primary fw-bold">{{ $inisial }}</div>
+                        <div class="avatar-initial bg-white text-info fw-bold">{{ $inisial }}</div>
                         @endif
                         <span class="d-none d-md-inline-block fw-bold ms-2">{{ $userNama }}</span>
                         <i class="fas fa-chevron-down ms-1 small opacity-75"></i>
@@ -41,8 +41,8 @@
                         <small class="text-muted d-block">Masuk sebagai:</small>
                         <span class="fw-bold text-primary">{{ $userNama }}</span>
                     </li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-primary"></i> Profil Saya</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2 text-primary"></i> Ganti Password</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-info"></i> Profil Saya</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2 text-info"></i> Ganti Password</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
