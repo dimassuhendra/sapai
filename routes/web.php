@@ -3,6 +3,7 @@
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/programs', [ProgramController::class, 'store'])->name('programs.store');
     Route::put('/programs/{program}', [ProgramController::class, 'update'])->name('programs.update');
     Route::delete('/programs/{program}', [ProgramController::class, 'destroy'])->name('programs.destroy');
-
+    Route::get('admin/materials', [MaterialController::class, 'index'])->name('materials.index');
+    Route::post('admin/materials', [MaterialController::class, 'store'])->name('materials.store');
+    Route::put('admin/materials/{material}', [MaterialController::class, 'update'])->name('materials.update');
+    Route::delete('admin/materials/{material}', [MaterialController::class, 'destroy'])->name('materials.destroy');
     Route::get('/materials', fn() => view('admin.materials.index'))->name('admin.materials');
 
     // Menu Konten (Placeholder #)

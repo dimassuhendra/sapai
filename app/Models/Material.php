@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Material extends Model
 {
+    protected $table = 'materials';
     protected $fillable = ['guru_id', 'program_id', 'judul', 'konten', 'file_path', 'order_index', 'is_public'];
 
     public function program()
