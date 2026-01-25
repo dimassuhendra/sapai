@@ -18,7 +18,7 @@
         <a href="{{ route('materials.index') }}" class="list-group-item">
             <i class="fas fa-file-video"></i> Materi
         </a>
-        <a href="#" class="list-group-item">
+        <a href="{{ route('enrollments.index') }}" class="list-group-item">
             <i class="fas fa-user-plus"></i> Pendaftaran
         </a>
 

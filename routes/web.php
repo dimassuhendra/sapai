@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EnrollmentController;
+use App\Http\Controllers\Admin\RegistrationController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +28,11 @@ Route::prefix('admin')->group(function () {
     Route::post('admin/materials', [MaterialController::class, 'store'])->name('materials.store');
     Route::put('admin/materials/{material}', [MaterialController::class, 'update'])->name('materials.update');
     Route::delete('admin/materials/{material}', [MaterialController::class, 'destroy'])->name('materials.destroy');
-    Route::get('/materials', fn() => view('admin.materials.index'))->name('admin.materials');
+    // Route::get('registrations', [RegistrationController::class, 'index'])->name('registrations.index');
+    // Route::put('registrations/{id}/update-status', [RegistrationController::class, 'updateStatus'])->name('registrations.updateStatus');
+    // Route::delete('registrations/{id}', [RegistrationController::class, 'destroy'])->name('registrations.destroy');
+    Route::get('enrollments', [EnrollmentController::class, 'index'])->name('enrollments.index');
+    Route::put('enrollments/{id}/update-status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.updateStatus');
+    Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
 
-    // Menu Konten (Placeholder #)
-    Route::get('/settings', fn() => view('admin.settings.index'))->name('admin.settings');
-});
+    });
