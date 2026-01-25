@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enrollment extends Model
 {
-    protected $fillable = ['user_id', 'program_id', 'status_bayar', 'tgl_daftar'];
+    protected $fillable = ['user_id', 'program_id', 'status_bayar', 'tgl_daftar', 'created_at', 'updated_at'];
 
     // Opsional: Jika ingin mengakses data user/program dari objek enrollment
     public function user()
