@@ -23,7 +23,7 @@
         </a>
 
         <div class="menu-label">Konten</div>
-        <a href="#" class="list-group-item">
+        <a href="{{ route('galleries.index') }}" class="list-group-item">
             <i class="fas fa-images"></i> Galeri
         </a>
         <a href="#" class="list-group-item">

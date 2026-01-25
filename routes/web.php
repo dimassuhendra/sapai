@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrollmentController;
+use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\RegistrationController;
 
 use Illuminate\Support\Facades\Route;
@@ -35,5 +36,6 @@ Route::prefix('admin')->group(function () {
     Route::put('enrollments/{id}/update-status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.updateStatus');
     Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     Route::get('enrollments/export', [EnrollmentController::class, 'export'])->name('enrollments.export');
+    Route::resource('galleries', GalleryController::class);
 
     });
