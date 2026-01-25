@@ -19,9 +19,9 @@ class UserTableSeeder extends Seeder
     {
         // Akun Admin
         \App\Models\User::create([
-            'username' => 'admin_bimbel',
-            'email' => 'admin@bimbel.com',
-            'password' => bcrypt('password123'),
+            'username' => 'admin_sapai',
+            'email' => 'admin@sapai.com',
+            'password' => bcrypt('12345678'),
             'role' => 'admin',
             'nama_lengkap' => 'Administrator Utama',
         ]);
@@ -29,8 +29,8 @@ class UserTableSeeder extends Seeder
         // Akun Guru
         \App\Models\User::create([
             'username' => 'guru_matematika',
-            'email' => 'guru@bimbel.com',
-            'password' => bcrypt('password123'),
+            'email' => 'guru@sapai.com',
+            'password' => bcrypt('12345678'),
             'role' => 'guru',
             'nama_lengkap' => 'Budi Sudarsono, S.Pd',
         ]);
@@ -38,8 +38,8 @@ class UserTableSeeder extends Seeder
         // Akun Pendaftar/Siswa
         \App\Models\User::create([
             'username' => 'siswa_teladan',
-            'email' => 'siswa@gmail.com',
-            'password' => bcrypt('password123'),
+            'email' => 'siswa@sapai.com',
+            'password' => bcrypt('12345678'),
             'role' => 'pendaftar',
             'nama_lengkap' => 'Andi Wijaya',
         ]);
