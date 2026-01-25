@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Domine:wght@700&display=swap"
+        rel="stylesheet">
     <style>
         body {
-            font-family: 'Acme', sans-serif;
+            font-family: 'Fredoka', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
             margin: 0;
@@ -23,7 +23,7 @@
 
         /* Variabel Warna */
         .bg-blue-custom {
-            background-color: #3b82f6;
+            background-color: #2193b0;
             color: white;
         }
 
@@ -88,9 +88,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="#">
-                <img src="{{ asset($settings['site_logo'] ?? 'img/logo.png') }}" alt="Logo" height="40" class="me-2">
-                {{ $settings['site_name'] ?? 'EduBot' }}
+            <a class="navbar-brand fw-bold" href="#" style="color: #2193b0;">
+                <img src=" {{ asset($settings['site_logo'] ?? 'img/logo.png') }}" alt="Logo" height="40" class="me-2">
+                {{ $settings['site_name'] ?? 'Les Privat Lampung' }}
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -178,7 +178,7 @@
             </div>
         </div>
         <svg class="wave-divider" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#3b82f6" fill-opacity="1" d="M0,160L60,176C120,192,240,224,360,208C480,192,600,128,720,122.7C840,117,960,171,1080,186.7C1200,203,1320,181,1380,170.7L1440,160V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0V160Z"></path>
+            <path fill="#2193b0" fill-opacity="1" d="M0,160L60,176C120,192,240,224,360,208C480,192,600,128,720,122.7C840,117,960,171,1080,186.7C1200,203,1320,181,1380,170.7L1440,160V320H1380C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320H0V160Z"></path>
         </svg>
     </section>
 
