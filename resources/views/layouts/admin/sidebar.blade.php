@@ -12,7 +12,7 @@
         </a>
 
         <div class="menu-label">Akademik</div>
-        <a href="#" class="list-group-item">
+        <a href="{{ route('programs.index') }}" class="list-group-item">
             <i class="fas fa-book"></i> Program Belajar
         </a>
         <a href="#" class="list-group-item">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Program extends Model
 {
-    protected $fillable = ['nama_program', 'deskripsi', 'harga', 'durasi', 'thumbnail'];
+    protected $fillable = ['urutan', 'nama_program', 'deskripsi', 'harga', 'durasi', 'thumbnail'];
 
     // Relasi: Satu program punya banyak materi
     public function materials()
