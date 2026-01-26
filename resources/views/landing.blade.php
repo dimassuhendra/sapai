@@ -121,8 +121,8 @@
                     <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
                     <li class="nav-item ms-lg-3">
-                        <a href="/login" class="btn btn-outline-primary px-4">Login</a>
-                        <a href="/register" class="btn btn-primary px-4">Daftar</a>
+                        <a href="/login-siswa" class="btn btn-outline-info px-4">Login</a>
+                        <a href="/daftar" class="btn btn-info px-4">Daftar</a>
                     </li>
                 </ul>
             </div>
@@ -229,18 +229,20 @@
 
                             <div class="mt-4">
                                 @if($t->user->foto_profil)
-                                <img src="{{ asset($t->user->foto_profil) }}"
+                                {{-- Tambahkan 'storage/' sebelum path agar mengarah ke symbolic link --}}
+                                <img src="{{ asset('storage/' . $t->user->foto_profil) }}"
                                     class="rounded-circle mb-2 shadow-sm" width="70" height="70"
                                     style="object-fit: cover; border: 3px solid #3b82f6;">
                                 @else
-                                <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white fw-bold mx-auto mb-2 shadow-sm"
-                                    style="width: 70px; height: 70px; font-size: 1.5rem; border: 3px solid #e0e7ff;">
-                                    {{ strtoupper(substr($t->user->nama_lengkap, 0, 1)) }}
-                                </div>
+                                {{-- Perbaikan: Gunakan $t->user->nama_lengkap, bukan Auth::user() --}}
+                                <img src="https://ui-avatars.com/api/?name={{ urlencode($t->user->nama_lengkap) }}&background=4f46e5&color=fff&bold=true"
+                                    alt="Avatar" width="70" height="70" class="rounded-circle border border-2 border-white-50 mb-2 shadow-sm">
                                 @endif
 
                                 <h6 class="mb-0 fw-bold">{{ $t->user->nama_lengkap }}</h6>
-                                <small class="text-primary fw-semibold">Siswa Lulusan</small>
+                                <small class="text-info fw-semibold">
+                                    Lulusan {{ $t->user->enrollments->first()->program->nama_program ?? 'Program Belajar' }}
+                                </small>
                             </div>
                         </div>
                     </div>

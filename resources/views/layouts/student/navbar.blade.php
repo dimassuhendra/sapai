@@ -21,7 +21,7 @@
                         alt="Avatar" width="40" height="40" class="rounded-circle border border-2 border-white-50">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3">
-                    <li><a class="dropdown-item py-2" href="#"><i class="fas fa-user-edit me-2"></i> Profil</a></li>
+                    <li><a class="dropdown-item py-2" href="{{ route('student.profile.index') }}"><i class="fas fa-user-edit me-2"></i> Profil</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

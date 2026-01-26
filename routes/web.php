@@ -18,6 +18,7 @@ use App\Http\Controllers\Student\MaterialController as StudentMaterialController
 use App\Http\Controllers\Student\ProgressController;
 use App\Http\Controllers\Student\NoteController;
 use App\Http\Controllers\Student\TestimoniController as StudentTestimoniController;
+use App\Http\Controllers\Student\ProfileController as StudentProfileController; 
 
 use Illuminate\Support\Facades\Route;
 
@@ -70,4 +71,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/catatan-saya/{id}', [NoteController::class, 'destroy'])->name('student.notes.destroy');
     Route::get('/testimoni', [StudentTestimoniController::class, 'index'])->name('student.testimoni.index');
     Route::post('/testimoni', [StudentTestimoniController::class, 'store'])->name('student.testimoni.store');
+    Route::get('/profil', [StudentProfileController::class, 'index'])->name('student.profile.index');
+    Route::put('/profil/update', [StudentProfileController::class, 'update'])->name('student.profile.update');
+    Route::put('/profil/password', [StudentProfileController::class, 'updatePassword'])->name('student.profile.password');
 });

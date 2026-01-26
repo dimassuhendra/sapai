@@ -25,7 +25,7 @@ class LandingPageController extends Controller
 
         // 4. AMBIL TESTIMONI (Hanya yang berstatus tampil dan muat data user)
         $testimonials = Testimonials::where('status_tampil', true)
-            ->with('user') // Penting untuk mengambil nama & foto profil
+            ->with(['user.enrollments.program']) // Mengambil user, lalu pendaftarannya, lalu detail programnya
             ->orderBy('updated_at', 'desc')
             ->get();
 
