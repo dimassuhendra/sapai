@@ -14,6 +14,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\ProgramController as StudentProgramController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
+use App\Http\Controllers\Student\ProgressController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -57,4 +58,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
     Route::get('/materi-belajar', [StudentMaterialController::class, 'index'])->name('student.material.index');
     Route::get('/materi-belajar/{id}', [StudentMaterialController::class, 'show'])->name('student.material.show');
+    Route::get('/progres-belajar', [ProgressController::class, 'index'])->name('student.progress');
 });

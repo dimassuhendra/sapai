@@ -22,8 +22,8 @@
             <i class="fas fa-book-open"></i> Materi Belajar
         </a>
 
-        <a href="#" class="nav-link {{ Request::is('student/progress*') ? 'active' : '' }}">
-            <i class="fas fa-chart-line"></i> <span>Progres Belajar</span>
+        <a href="{{ route('student.progress') }}" class="nav-link {{ Request::is('progres-belajar') ? 'active' : '' }}">
+            <i class="fas fa-chart-line"></i> Progres Belajar
         </a>
 
         <a href="#" class="nav-link {{ Request::is('student/notes*') ? 'active' : '' }}">
