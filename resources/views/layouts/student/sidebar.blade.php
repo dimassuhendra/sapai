@@ -26,8 +26,8 @@
             <i class="fas fa-chart-line"></i> Progres Belajar
         </a>
 
-        <a href="#" class="nav-link {{ Request::is('student/notes*') ? 'active' : '' }}">
-            <i class="fas fa-pencil-alt"></i> <span>Catatan Saya</span>
+        <a href="{{ route('student.notes.index') }}" class="nav-link {{ Request::is('catatan-saya') ? 'active' : '' }}">
+            <i class="fas fa-sticky-note"></i> Catatan Saya
         </a>
 
         <div class="menu-divider my-3"></div>

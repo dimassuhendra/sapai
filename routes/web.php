@@ -15,6 +15,7 @@ use App\Http\Controllers\Student\DashboardController as StudentDashboardControll
 use App\Http\Controllers\Student\ProgramController as StudentProgramController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 use App\Http\Controllers\Student\ProgressController;
+use App\Http\Controllers\Student\NoteController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -59,4 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/materi-belajar', [StudentMaterialController::class, 'index'])->name('student.material.index');
     Route::get('/materi-belajar/{id}', [StudentMaterialController::class, 'show'])->name('student.material.show');
     Route::get('/progres-belajar', [ProgressController::class, 'index'])->name('student.progress');
+    Route::get('/catatan-saya', [NoteController::class, 'index'])->name('student.notes.index');
+    Route::post('/catatan-saya', [NoteController::class, 'store'])->name('student.notes.store');
+    Route::delete('/catatan-saya/{id}', [NoteController::class, 'destroy'])->name('student.notes.destroy');
 });
