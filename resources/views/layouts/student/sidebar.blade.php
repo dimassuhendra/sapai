@@ -32,8 +32,8 @@
 
         <div class="menu-divider my-3"></div>
 
-        <a href="#" class="nav-link {{ Request::is('student/feedback*') ? 'active' : '' }}">
-            <i class="fas fa-star text-warning"></i> <span>Beri Testimoni</span>
+        <a href="{{ route('student.testimoni.index') }}" class="nav-link {{ Request::is('testimoni') ? 'active' : '' }}">
+            <i class="fas fa-star"></i> Beri Testimoni
         </a>
 
         <form action="{{ route('student.logout') }}" method="POST" class="mt-2">

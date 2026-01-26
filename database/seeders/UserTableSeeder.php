@@ -37,11 +37,11 @@ class UserTableSeeder extends Seeder
 
         // Akun Pendaftar/Siswa
         \App\Models\User::create([
-            'username' => 'siswa_teladan',
-            'email' => 'siswa@sapai.com',
+            'username' => 'adnandakurniawan',
+            'email' => 'adnandakurniawan@gmail.com',
             'password' => bcrypt('12345678'),
             'role' => 'pendaftar',
-            'nama_lengkap' => 'Andi Wijaya',
+            'nama_lengkap' => 'Adnanda Kurniawan',
         ]);
     }
 }

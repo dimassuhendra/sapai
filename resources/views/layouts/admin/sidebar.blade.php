@@ -36,8 +36,8 @@
             <i class="fas fa-images"></i> Galeri
         </a>
 
-        <a href="#" class="list-group-item {{ request()->is('settings*') ? 'active' : '' }}">
-            <i class="fas fa-cogs"></i> Pengaturan Web
+        <a href="{{ route('admin.testimoni.index') }}" class="list-group-item {{ request()->routeIs('admin.testimoni.*') ? 'active' : '' }}">
+            <i class="fas fa-cogs"></i> Testimoni
         </a>
 
         <div class="sidebar-footer mt-auto mb-4">

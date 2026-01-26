@@ -205,27 +205,51 @@
         </svg>
     </section>
 
-    <section id="testimoni" class="section-padding bg-light-custom">
+    <section id="testimoni" class="section-padding bg-light-custom mb-5">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5">Apa Kata Siswa Kami</h2>
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Apa Kata Siswa Kami</h2>
+                <p class="text-muted">Testimoni asli dari siswa yang telah bergabung bersama kami.</p>
+            </div>
+
             <div class="row g-4">
                 @forelse($testimonials as $t)
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm p-4 text-center">
-                        <div class="card-body">
-                            <i class="fas fa-quote-left text-primary mb-3" style="font-size: 1.5rem; opacity: 0.3;"></i>
-                            <p class="fst-italic text-secondary">"{{ $t->isi_testimoni }}"</p>
+                    <div class="card h-100 shadow-sm border-0 rounded-4 p-4 text-center">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mb-3 text-warning">
+                                @for($i = 1; $i <= 5; $i++)
+                                    <i class="fas fa-star {{ $i <= $t->rating ? '' : 'text-light' }}"></i>
+                                    @endfor
+                            </div>
+
+                            <p class="fst-italic text-secondary flex-grow-1">
+                                "{{ $t->testimoni }}"
+                            </p>
+
                             <div class="mt-4">
-                                <img src="{{ asset($t->user->foto_profil ?? 'assets/img/user.png') }}"
-                                    class="rounded-circle mb-2" width="60" height="60" style="object-fit: cover; border: 3px solid #3b82f6;">
+                                @if($t->user->foto_profil)
+                                <img src="{{ asset($t->user->foto_profil) }}"
+                                    class="rounded-circle mb-2 shadow-sm" width="70" height="70"
+                                    style="object-fit: cover; border: 3px solid #3b82f6;">
+                                @else
+                                <div class="d-flex align-items-center justify-content-center rounded-circle bg-primary text-white fw-bold mx-auto mb-2 shadow-sm"
+                                    style="width: 70px; height: 70px; font-size: 1.5rem; border: 3px solid #e0e7ff;">
+                                    {{ strtoupper(substr($t->user->nama_lengkap, 0, 1)) }}
+                                </div>
+                                @endif
+
                                 <h6 class="mb-0 fw-bold">{{ $t->user->nama_lengkap }}</h6>
-                                <small class="text-primary">Siswa Aktif</small>
+                                <small class="text-primary fw-semibold">Siswa Lulusan</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 @empty
-                <div class="col-12 text-center text-muted">Belum ada testimoni.</div>
+                <div class="col-12 text-center text-muted">
+                    <i class="fas fa-comment-slash fa-3x mb-3 opacity-25"></i>
+                    <p>Belum ada testimoni yang ditampilkan.</p>
+                </div>
                 @endforelse
             </div>
         </div>

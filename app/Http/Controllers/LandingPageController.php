@@ -13,17 +13,32 @@ class LandingPageController extends Controller
 {
     public function index()
     {
+        // 1. Ambil Pengaturan Web
         $settings = Settings::pluck('setting_value', 'setting_key')->toArray();
 
+        // 2. Ambil Program (Semua & Grid)
         $programs = Program::orderBy('urutan', 'asc')->get();
         $programs_grid = Program::orderBy('urutan', 'asc')->limit(6)->get();
 
-        // PERBAIKAN: Gunakan scopeOrdered agar urutan yang diatur admin berfungsi
-        $galleries = Gallery::ordered()->limit(8)->get();
+        // 3. Ambil Galeri
+        $galleries = Gallery::orderBy('created_at', 'desc')->limit(8)->get();
 
-        $testimonials = Testimonials::where('status_tampil', true)->with('user')->get();
+        // 4. AMBIL TESTIMONI (Hanya yang berstatus tampil dan muat data user)
+        $testimonials = Testimonials::where('status_tampil', true)
+            ->with('user') // Penting untuk mengambil nama & foto profil
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        // 5. Ambil Materi Publik
         $materials = Material::where('is_public', true)->limit(8)->get();
 
-        return view('landing', compact('settings', 'programs', 'programs_grid', 'galleries', 'testimonials', 'materials'));
+        return view('landing', compact(
+            'settings',
+            'programs',
+            'programs_grid',
+            'galleries',
+            'testimonials',
+            'materials'
+        ));
     }
 }

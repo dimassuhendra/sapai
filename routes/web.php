@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\TestimoniController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\RegisterController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Student\ProgramController as StudentProgramController;
 use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 use App\Http\Controllers\Student\ProgressController;
 use App\Http\Controllers\Student\NoteController;
+use App\Http\Controllers\Student\TestimoniController as StudentTestimoniController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +51,9 @@ Route::prefix('admin')->group(function () {
     Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     Route::get('enrollments/export', [EnrollmentController::class, 'export'])->name('enrollments.export');
     Route::resource('galleries', GalleryController::class);
+    Route::get('/testimoni', [TestimoniController::class, 'index'])->name('admin.testimoni.index');
+    Route::patch('/testimoni/{id}/toggle', [TestimoniController::class, 'toggleStatus'])->name('admin.testimoni.toggle');
+    Route::delete('/testimoni/{id}', [TestimoniController::class, 'destroy'])->name('admin.testimoni.destroy');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
@@ -63,4 +68,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/catatan-saya', [NoteController::class, 'index'])->name('student.notes.index');
     Route::post('/catatan-saya', [NoteController::class, 'store'])->name('student.notes.store');
     Route::delete('/catatan-saya/{id}', [NoteController::class, 'destroy'])->name('student.notes.destroy');
+    Route::get('/testimoni', [StudentTestimoniController::class, 'index'])->name('student.testimoni.index');
+    Route::post('/testimoni', [StudentTestimoniController::class, 'store'])->name('student.testimoni.store');
 });
