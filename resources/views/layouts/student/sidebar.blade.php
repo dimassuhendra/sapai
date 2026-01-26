@@ -13,7 +13,7 @@
             <i class="fas fa-home"></i> <span>Dashboard</span>
         </a>
 
-        <a href="#" class="nav-link {{ Request::is('student/programs*') ? 'active' : '' }}">
+        <a href="{{ route('student.program') }}" class="nav-link {{ Request::is('student/programs*') ? 'active' : '' }}">
             <i class="fas fa-graduation-cap"></i> <span>Program Saya</span>
         </a>
 

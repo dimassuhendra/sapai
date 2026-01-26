@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentAuthController;
 use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+use App\Http\Controllers\Student\ProgramController as StudentProgramController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,5 @@ Route::prefix('admin')->group(function () {
 Route::middleware(['auth'])->group(function () {
     // Pastikan URL sesuai dengan yang ada di Sidebar layout sebelumnya
     Route::get('/dashboard-siswa', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+    Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
 });
