@@ -17,8 +17,9 @@
             <i class="fas fa-graduation-cap"></i> <span>Program Saya</span>
         </a>
 
-        <a href="#" class="nav-link {{ Request::is('student/materials*') ? 'active' : '' }}">
-            <i class="fas fa-book-open"></i> <span>Materi Belajar</span>
+        <a href="{{ route('student.material.index') }}"
+            class="nav-link {{ Request::is('materi-belajar*') ? 'active' : '' }}">
+            <i class="fas fa-book-open"></i> Materi Belajar
         </a>
 
         <a href="#" class="nav-link {{ Request::is('student/progress*') ? 'active' : '' }}">

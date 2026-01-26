@@ -13,7 +13,7 @@ use App\Http\Controllers\RegisterController;
 
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\Student\ProgramController as StudentProgramController;
-
+use App\Http\Controllers\Student\MaterialController as StudentMaterialController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +30,6 @@ Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login.
 Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 Route::prefix('admin')->group(function () {
-    // Dashboard Utama
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
     Route::post('/programs', [ProgramController::class, 'store'])->name('programs.store');
@@ -54,7 +53,8 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Pastikan URL sesuai dengan yang ada di Sidebar layout sebelumnya
     Route::get('/dashboard-siswa', [StudentDashboardController::class, 'index'])->name('student.dashboard');
     Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
+    Route::get('/materi-belajar', [StudentMaterialController::class, 'index'])->name('student.material.index');
+    Route::get('/materi-belajar/{id}', [StudentMaterialController::class, 'show'])->name('student.material.show');
 });
