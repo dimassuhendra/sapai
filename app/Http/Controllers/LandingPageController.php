@@ -15,8 +15,8 @@ class LandingPageController extends Controller
     {
         $settings = Settings::pluck('setting_value', 'setting_key')->toArray();
 
-        $programs = Program::orderBy('id', 'asc')->get();
-        $programs_grid = Program::limit(6)->get();
+        $programs = Program::orderBy('urutan', 'asc')->get();
+        $programs_grid = Program::orderBy('urutan', 'asc')->limit(6)->get();
 
         // PERBAIKAN: Gunakan scopeOrdered agar urutan yang diatur admin berfungsi
         $galleries = Gallery::ordered()->limit(8)->get();
