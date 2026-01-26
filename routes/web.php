@@ -8,11 +8,20 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\StudentAuthController;
+use App\Http\Controllers\RegisterController;
+
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
+
 
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
+Route::get('/login-siswa', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+Route::post('/login-siswa', [StudentAuthController::class, 'login'])->name('student.login.submit');
+Route::post('/logout-siswa', [StudentAuthController::class, 'logout'])->name('student.logout');
+Route::get('/daftar', [RegisterController::class, 'showRegistrationForm'])->name('student.register');
+Route::post('/daftar', [RegisterController::class, 'register'])->name('student.register.submit');
 
 // Halaman Login Admin
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
@@ -41,5 +50,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
+});
 
-    });
+Route::middleware(['auth'])->group(function () {
+    // Pastikan URL sesuai dengan yang ada di Sidebar layout sebelumnya
+    Route::get('/dashboard-siswa', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+});
