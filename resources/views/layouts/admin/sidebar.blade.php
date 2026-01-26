@@ -7,8 +7,9 @@
     </div>
 
     <div class="list-group list-group-flush mt-3 px-3">
-        <a href="#" class="list-group-item {{ request()->is('dashboard*') ? 'active' : '' }}">
-            <i class="fas fa-tachometer-alt"></i> Dashboard
+        <a href="{{ route('admin.dashboard') }}"
+            class="list-group-item {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
+            <i class="fas fa-book"></i> Dashboard
         </a>
 
         <div class="menu-label">Akademik</div>
@@ -40,7 +41,7 @@
         </a>
 
         <div class="sidebar-footer mt-auto mb-4">
-            <a href="#" class="list-group-item external-link">
+            <a href="{{ route('home') }}" class="list-group-item external-link">
                 <i class="fas fa-external-link-alt"></i> Lihat Website
             </a>
         </div>

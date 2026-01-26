@@ -41,17 +41,19 @@
                         <small class="text-muted d-block">Masuk sebagai:</small>
                         <span class="fw-bold text-primary">{{ $userNama }}</span>
                     </li>
-                    <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-info"></i> Profil Saya</a></li>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="fas fa-user-circle me-2 text-info"></i> Profil Saya</a></li>
                     <li><a class="dropdown-item" href="#"><i class="fas fa-key me-2 text-info"></i> Ganti Password</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <form action="/logout" method="POST">
+                        <a class="dropdown-item text-danger" href="{{ route('admin.logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                        </a>
+
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                             @csrf
-                            <button class="dropdown-item text-danger d-flex align-items-center w-100" type="submit">
-                                <i class="fas fa-sign-out-alt me-2"></i> Keluar
-                            </button>
                         </form>
                     </li>
                 </ul>

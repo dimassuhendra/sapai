@@ -198,7 +198,7 @@
     <div class="login-card">
         <div class="login-info">
             <div class="logo-container">
-                <img src="{{ asset('img/logo.png') }}" alt="EduBot Logo" width="50" style="filter: brightness(0) invert(1);">
+                <img src="{{ asset('img/logo.png') }}" alt="EduBot Logo" width="70" style="filter: brightness(0) invert(1);">
             </div>
             <div class="content">
                 <h1>Selamat Datang Kembali!</h1>

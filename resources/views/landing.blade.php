@@ -104,8 +104,8 @@
                                 @forelse($programs as $prog)
                                 <div class="col-12 mb-2">
                                     <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <img src="{{ asset($prog->thumbnail ?? 'assets/img/default-prog.png') }}"
-                                            width="40" class="rounded me-2">
+                                        <img src="{{ $prog->thumbnail ? asset('storage/' . $prog->thumbnail) : asset('assets/img/default-prog.png') }}"
+                                            width="40" height="40" class="rounded me-2" style="object-fit: cover;">
                                         <div>
                                             <div class="fw-bold">{{ $prog->nama_program }}</div>
                                             <small class="text-muted">{{ Str::limit($prog->deskripsi, 30) }}</small>
@@ -164,7 +164,10 @@
                 @forelse($programs_grid as $pg)
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="{{ asset($pg->thumbnail ?? 'assets/img/default-prog.png') }}" class="card-img-top" style="border-radius: 20px 20px 0 0;">
+                        <img src="{{ $pg->thumbnail ? asset('storage/' . $pg->thumbnail) : asset('assets/img/default-prog.png') }}"
+                            class="card-img-top"
+                            style="border-radius: 20px 20px 0 0; height: 200px; object-fit: cover;">
+
                         <div class="card-body p-4 text-center">
                             <h5 class="card-title fw-bold text-primary">{{ $pg->nama_program }}</h5>
                             <p class="card-text text-muted small">{{ Str::limit($pg->deskripsi, 100) }}</p>
@@ -184,14 +187,16 @@
 
     <section id="galeri" class="section-padding bg-blue-custom">
         <div class="container text-center">
-            <h2 class="fw-bold mb-5">Galeri Kegiatan</h2>
+            <h2 class="fw-bold mb-5 text-white">Galeri Kegiatan</h2>
             <div class="row g-3">
                 @forelse($galleries as $g)
                 <div class="col-6 col-md-3">
-                    <img src="{{ asset($g->file_foto) }}" class="img-fluid gallery-img w-100 shadow" alt="{{ $g->judul_foto }}">
+                    <img src="{{ asset('storage/' . $g->image_path) }}"
+                        class="img-fluid gallery-img w-100 shadow"
+                        alt="{{ $g->judul }}">
                 </div>
                 @empty
-                <div class="col-12 text-center opacity-75">Belum ada foto kegiatan.</div>
+                <div class="col-12 text-center opacity-75 text-white">Belum ada foto kegiatan.</div>
                 @endforelse
             </div>
         </div>

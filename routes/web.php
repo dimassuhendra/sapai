@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\MaterialController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EnrollmentController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RegistrationController;
 
 use Illuminate\Support\Facades\Route;
@@ -37,5 +38,8 @@ Route::prefix('admin')->group(function () {
     Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     Route::get('enrollments/export', [EnrollmentController::class, 'export'])->name('enrollments.export');
     Route::resource('galleries', GalleryController::class);
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('admin.profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
 
     });
