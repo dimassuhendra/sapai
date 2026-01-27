@@ -74,6 +74,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
     Route::get('/materi-belajar', [StudentMaterialController::class, 'index'])->name('student.material.index');
     Route::get('/materi-belajar/{id}', [StudentMaterialController::class, 'show'])->name('student.material.show');
+    Route::post('/materi-belajar/{id}/complete', [StudentMaterialController::class, 'markAsComplete'])->name('student.material.complete');
     Route::get('/progres-belajar', [ProgressController::class, 'index'])->name('student.progress');
     Route::get('/catatan-saya', [NoteController::class, 'index'])->name('student.notes.index');
     Route::post('/catatan-saya', [NoteController::class, 'store'])->name('student.notes.store');
