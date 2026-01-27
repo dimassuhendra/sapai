@@ -21,20 +21,22 @@ class RegisterController extends Controller
     {
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
-            'username' => 'required|string|unique:users,username|max:255',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-            'program_id' => 'required|exists:programs,id',
+            'username'     => 'required|string|unique:users,username|max:255',
+            'email'        => 'required|email|unique:users,email',
+            'no_telp'      => 'required|numeric|digits_between:10,15',
+            'password'     => 'required|min:8|confirmed',
+            'program_id'   => 'required|exists:programs,id',
         ]);
 
         $dataPendaftaran = DB::transaction(function () use ($request) {
             $user = User::create([
                 'nama_lengkap' => $request->nama_lengkap,
-                'username' => $request->username,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => 'pendaftar',
-                'foto_profil' => 'default.jpg',
+                'username'     => $request->username,
+                'email'        => $request->email,
+                'no_telp'      => $request->no_telp,
+                'password'     => Hash::make($request->password),
+                'role'         => 'pendaftar',
+                'foto_profil'  => 'default.jpg',
             ]);
 
             $program = DB::table('programs')->where('id', $request->program_id)->first();

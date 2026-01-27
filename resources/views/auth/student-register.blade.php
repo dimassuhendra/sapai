@@ -190,9 +190,18 @@
                                     </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label class="form-label small fw-bold">Alamat Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="budi@example.com" value="{{ old('email') }}" required>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small fw-bold">Alamat Email</label>
+                                        <input type="email" name="email" class="form-control" placeholder="budi@example.com" value="{{ old('email') }}" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label class="form-label small fw-bold">No. WhatsApp/Telepon</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-light border-end-0" style="border-radius: 12px 0 0 12px;"><i class="fab fa-whatsapp text-success"></i></span>
+                                            <input type="number" name="no_telp" class="form-control border-start-0" placeholder="6281234567xxx" value="{{ old('no_telp') }}" style="border-radius: 0 12px 12px 0;" required>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="row mb-3">

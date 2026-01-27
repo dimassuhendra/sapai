@@ -22,6 +22,7 @@ use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 
 use App\Http\Controllers\Guru\AuthController as GuruLoginController;
 use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
+use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profil/password', [StudentProfileController::class, 'updatePassword'])->name('student.profile.password');
 });
 
-Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
-    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
+Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(function () {
+    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('material', GuruMaterialController::class)->except(['create', 'edit']);
 });
