@@ -8,36 +8,37 @@
 
     <div class="list-group list-group-flush mt-3 px-3">
         <a href="{{ route('admin.dashboard') }}"
-            class="list-group-item {{ request()->routeIs('dashboard.*') ? 'active' : '' }}">
-            <i class="fas fa-book"></i> Dashboard
+            class="list-group-item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+            <i class="fas fa-th-large"></i> Dashboard
         </a>
 
         <div class="menu-label">Akademik</div>
 
         <a href="{{ route('programs.index') }}"
-            class="list-group-item {{ request()->routeIs('programs.*') ? 'active' : '' }}">
+            class="list-group-item {{ request()->is('admin/programs*') ? 'active' : '' }}">
             <i class="fas fa-book"></i> Program Belajar
         </a>
 
         <a href="{{ route('materials.index') }}"
-            class="list-group-item {{ request()->routeIs('materials.*') ? 'active' : '' }}">
+            class="list-group-item {{ request()->is('admin/admin/materials*') || request()->is('admin/materials*') ? 'active' : '' }}">
             <i class="fas fa-file-video"></i> Materi
         </a>
 
         <a href="{{ route('enrollments.index') }}"
-            class="list-group-item {{ request()->routeIs('enrollments.*') ? 'active' : '' }}">
+            class="list-group-item {{ request()->is('admin/enrollments*') ? 'active' : '' }}">
             <i class="fas fa-user-plus"></i> Data Siswa
         </a>
 
         <div class="menu-label">Konten</div>
 
         <a href="{{ route('galleries.index') }}"
-            class="list-group-item {{ request()->routeIs('galleries.*') ? 'active' : '' }}">
+            class="list-group-item {{ request()->is('admin/galleries*') ? 'active' : '' }}">
             <i class="fas fa-images"></i> Galeri
         </a>
 
-        <a href="{{ route('admin.testimoni.index') }}" class="list-group-item {{ request()->routeIs('admin.testimoni.*') ? 'active' : '' }}">
-            <i class="fas fa-cogs"></i> Testimoni
+        <a href="{{ route('admin.testimoni.index') }}"
+            class="list-group-item {{ request()->is('admin/testimoni*') ? 'active' : '' }}">
+            <i class="fas fa-comment-dots"></i> Testimoni
         </a>
 
         <div class="sidebar-footer mt-auto mb-4">

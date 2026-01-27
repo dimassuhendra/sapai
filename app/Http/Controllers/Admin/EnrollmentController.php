@@ -41,10 +41,17 @@ class EnrollmentController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $enrollment = Enrollment::findOrFail($id);
-        $enrollment->update(['status_bayar' => $request->status_bayar]);
+        $enrollment = Enrollment::with('user', 'program')->findOrFail($id);
 
-        return back()->with('success', 'Status pendaftaran berhasil diperbarui!');
+        $enrollment->update([
+            'status_bayar' => $request->status_bayar
+        ]);
+
+        // Mengirim session flash 'konfirmasi_sukses' untuk memicu modal di Blade
+        return back()->with('konfirmasi_sukses', [
+            'nama' => $enrollment->user->nama_lengkap,
+            'program' => $enrollment->program->nama_program
+        ]);
     }
 
     public function destroy($id)

@@ -56,7 +56,7 @@ Route::prefix('admin')->group(function () {
     // Route::put('registrations/{id}/update-status', [RegistrationController::class, 'updateStatus'])->name('registrations.updateStatus');
     // Route::delete('registrations/{id}', [RegistrationController::class, 'destroy'])->name('registrations.destroy');
     Route::get('enrollments', [EnrollmentController::class, 'index'])->name('enrollments.index');
-    Route::put('enrollments/{id}/update-status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.updateStatus');
+    Route::put('/admin/enrollments/{id}/update-status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.updateStatus');
     Route::delete('enrollments/{id}', [EnrollmentController::class, 'destroy'])->name('enrollments.destroy');
     Route::get('enrollments/export', [EnrollmentController::class, 'export'])->name('enrollments.export');
     Route::resource('galleries', GalleryController::class);
@@ -70,6 +70,7 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard-siswa', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+    Route::post('/upload-bukti/{id}', [StudentDashboardController::class, 'uploadBukti'])->name('student.upload.bukti');
     Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
     Route::get('/materi-belajar', [StudentMaterialController::class, 'index'])->name('student.material.index');
     Route::get('/materi-belajar/{id}', [StudentMaterialController::class, 'show'])->name('student.material.show');
