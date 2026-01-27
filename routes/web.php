@@ -18,7 +18,10 @@ use App\Http\Controllers\Student\MaterialController as StudentMaterialController
 use App\Http\Controllers\Student\ProgressController;
 use App\Http\Controllers\Student\NoteController;
 use App\Http\Controllers\Student\TestimoniController as StudentTestimoniController;
-use App\Http\Controllers\Student\ProfileController as StudentProfileController; 
+use App\Http\Controllers\Student\ProfileController as StudentProfileController;
+
+use App\Http\Controllers\Guru\AuthController as GuruLoginController;
+use App\Http\Controllers\Guru\DashboardController as GuruDashboardController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +36,10 @@ Route::post('/daftar', [RegisterController::class, 'register'])->name('student.r
 Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
 Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
+
+// Halaman Login Guru
+Route::get('/guru/login', [GuruLoginController::class, 'showLoginForm'])->name('guru.login');
+Route::post('/guru/login', [GuruLoginController::class, 'login'])->name('guru.login.submit');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
@@ -74,4 +81,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profil', [StudentProfileController::class, 'index'])->name('student.profile.index');
     Route::put('/profil/update', [StudentProfileController::class, 'update'])->name('student.profile.update');
     Route::put('/profil/password', [StudentProfileController::class, 'updatePassword'])->name('student.profile.password');
+});
+
+Route::middleware(['auth', 'role:guru'])->prefix('guru')->group(function () {
+    Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('guru.dashboard');
 });
