@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
             'email'        => 'required|email|unique:users,email,' . $user->id,
-            'no_hp'        => 'nullable|string|max:15',
+            'no_telp'        => 'nullable|string|max:15',
             'foto_profil'  => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
@@ -40,7 +40,7 @@ class ProfileController extends Controller
 
         $user->nama_lengkap = $request->nama_lengkap;
         $user->email = $request->email;
-        $user->no_hp = $request->no_hp;
+        $user->no_telp = $request->no_telp;
         $user->save();
 
         return back()->with('success', 'Profil berhasil diperbarui!');

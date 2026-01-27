@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Nomor HP/WhatsApp</label>
-                            <input type="text" name="no_hp" class="form-control rounded-3" value="{{ $user->no_hp }}">
+                            <input type="text" name="no_telp" class="form-control rounded-3" value="{{ $user->no_telp }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label small fw-bold">Ganti Foto Profil</label>
