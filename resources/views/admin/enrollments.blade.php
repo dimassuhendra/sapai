@@ -87,8 +87,8 @@
                         <td>
                             @if($e->bukti_transfer)
                             {{-- Pastikan path storage/ sudah benar --}}
-                            <a href="{{ asset('storage/' . $e->bukti_transfer) }}" target="_blank">
-                                <img src="{{ asset('storage/' . $e->bukti_transfer) }}"
+                            <a href="{{ asset('storage/bukti_transfer/' . $e->bukti_transfer) }}" target="_blank">
+                                <img src="{{ asset('storage/bukti_transfer/' . $e->bukti_transfer) }}"
                                     class="rounded border shadow-sm"
                                     width="45" height="45"
                                     style="object-fit: cover;"
