@@ -24,9 +24,11 @@
                     @if($user->foto_profil)
                     <img src="{{ asset('storage/' . $user->foto_profil) }}" class="rounded-circle shadow-sm" width="150" height="150" style="object-fit: cover; border: 5px solid #f8f9fa;">
                     @else
-                    <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto shadow-sm" style="width: 150px; height: 150px; font-size: 3rem;">
+                    <div class="rounded-circle d-flex align-items-center justify-content-center text-white shadow-sm"
+                        style="width:150px;height:150px;font-size:3rem;background-color: var(--student-secondary);">
                         {{ strtoupper(substr($user->nama_lengkap, 0, 1)) }}
                     </div>
+
                     @endif
                 </div>
                 <h5 class="fw-bold mb-1">{{ $user->nama_lengkap }}</h5>
@@ -61,7 +63,7 @@
                         </div>
                     </div>
                     <div class="text-end mt-3">
-                        <button type="submit" class="btn btn-primary rounded-pill px-4 shadow-sm">Simpan Perubahan</button>
+                        <button type="submit" class="btn text-white rounded-pill px-4 shadow-sm" style="background-color: var(--student-secondary);">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>

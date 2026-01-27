@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary rounded-pill py-2 fw-bold shadow-sm">
+                        <button type="submit" class="btn rounded-pill text-white py-2 fw-bold shadow-sm" style="background-color: var(--student-secondary);">
                             <i class="fas fa-paper-plane me-2"></i> {{ isset($myTestimoni) ? 'Perbarui Testimoni' : 'Kirim Testimoni' }}
                         </button>
                     </div>
@@ -55,13 +55,13 @@
         </div>
 
         <div class="col-lg-4">
-            <div class="card border-0 bg-primary text-white shadow-sm rounded-4 p-4">
+            <div class="card border-0 text-white shadow-sm rounded-4 p-4" style="background-color: var(--student-secondary);">
                 <i class="fas fa-quote-left fa-3x mb-3 opacity-50"></i>
                 <h5 class="fw-bold">Kenapa testimoni itu penting?</h5>
                 <p class="small opacity-75">Ulasan Anda sangat berarti bagi calon siswa lain untuk meyakinkan mereka memulai perjalanan belajar. Selain itu, masukan Anda membantu pengajar meningkatkan kualitas materi.</p>
                 <hr class="border-white opacity-25">
                 <div class="d-flex align-items-center">
-                    <div class="bg-white rounded-circle p-2 text-primary me-3">
+                    <div class="bg-white rounded-circle p-2 me-3" style="color: var(--student-secondary);">
                         <i class="fas fa-heart"></i>
                     </div>
                     <span class="small fw-bold">Terima kasih atas kontribusi Anda!</span>

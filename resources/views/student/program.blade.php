@@ -76,7 +76,7 @@
                 <div class="alert alert-info small border-0">
                     <i class="fas fa-info-circle me-1"></i> Silahkan lakukan pembayaran untuk mengaktifkan akses materi.
                 </div>
-                <button class="btn btn-primary w-100 rounded-pill fw-bold py-2">
+                <button class="btn w-100 rounded-pill fw-bold py-2" style="background-color: var(--student-secondary);">
                     <i class="fas fa-upload me-2"></i> Konfirmasi Pembayaran
                 </button>
                 @else

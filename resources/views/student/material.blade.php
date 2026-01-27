@@ -29,7 +29,7 @@
                     <p class="text-muted">Halaman materi hanya tersedia untuk siswa yang sudah melunasi pembayaran program <strong>{{ $enrollment->nama_program ?? 'pilihan' }}</strong>.</p>
 
                     <div class="d-grid gap-2 mt-4">
-                        <a href="{{ route('student.program') }}" class="btn btn-primary rounded-pill py-2 fw-bold shadow-sm">Selesaikan Pembayaran</a>
+                        <a href="{{ route('student.program') }}" class="btn text-white rounded-pill py-2 fw-bold shadow-sm" style="background-color: var(--student-secondary);">Selesaikan Pembayaran</a>
                         <a href="{{ route('student.dashboard') }}" class="btn btn-light rounded-pill py-2 text-muted">Kembali ke Dashboard</a>
                     </div>
                 </div>
