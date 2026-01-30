@@ -27,7 +27,7 @@
 
                     <div class="profile-container text-white">
                         @if($hasPhoto)
-                        <img src="{{ asset('storage/' . auth()->user()->foto_profil) }}" class="profile-img border border-2 border-white">
+                        <img src="{{ asset('storage/avatars/' . auth()->user()->foto_profil) }}" class="profile-img border border-2 border-white">
                         @else
                         <div class="avatar-initial bg-white text-info fw-bold">{{ $inisial }}</div>
                         @endif
