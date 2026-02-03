@@ -36,7 +36,15 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'web' => [ // untuk Siswa
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'admin' => [ // buat guard khusus Admin
+            'driver' => 'session',
+            'provider' => 'users', // Tabelnya tetap users
+        ],
+        'guru' => [ // guard khusus Guru
             'driver' => 'session',
             'provider' => 'users',
         ],

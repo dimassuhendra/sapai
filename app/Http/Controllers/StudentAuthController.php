@@ -7,13 +7,15 @@ use Illuminate\Support\Facades\Auth;
 
 class StudentAuthController extends Controller
 {
-    // Menampilkan halaman login siswa
     public function showLoginForm()
     {
+        // Jika sudah login sebagai siswa, langsung ke dashboard
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('student.dashboard');
+        }
         return view('auth.student-login');
     }
 
-    // Proses login siswa
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -21,27 +23,27 @@ class StudentAuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
-            // Cek apakah yang login benar-benar pendaftar/siswa
-            if (Auth::user()->role === 'pendaftar') {
-                $request->session()->regenerate();
-                return redirect()->intended('/dashboard-siswa');
-            }
+        // PERBAIKAN: Gunakan guard('web') dan kunci role 'pendaftar' (atau 'siswa')
+        if (Auth::guard('web')->attempt(array_merge($credentials, ['role' => 'pendaftar']))) {
 
-            // Jika bukan pendaftar, logout kembali
-            Auth::logout();
-            return back()->withErrors(['email' => 'Akun Anda bukan akun siswa.']);
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard-siswa');
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah.']);
+        return back()->withErrors([
+            'email' => 'Email atau password salah, atau Anda bukan akun siswa.',
+        ])->withInput($request->only('email'));
     }
 
-    // Logout siswa
     public function logout(Request $request)
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/login-siswa');
+        Auth::guard('web')->logout();
+
+        // Agar session Admin di tab lain TIDAK ikut mati, 
+        // jangan gunakan $request->session()->invalidate() secara total 
+        // jika Anda ingin membiarkan user login di dua role berbeda sekaligus.
+        // Cukup hapus session milik guard ini saja:
+
+        return redirect('/login-siswa')->with('success', 'Berhasil keluar.');
     }
 }

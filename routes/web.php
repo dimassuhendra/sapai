@@ -27,22 +27,28 @@ use App\Http\Controllers\Guru\MaterialController as GuruMaterialController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
-Route::get('/login-siswa', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
-Route::post('/login-siswa', [StudentAuthController::class, 'login'])->name('student.login.submit');
+Route::middleware('guest:web')->group(function () {
+    Route::get('/login-siswa', [StudentAuthController::class, 'showLoginForm'])->name('student.login');
+    Route::post('/login-siswa', [StudentAuthController::class, 'login'])->name('student.login.submit');
+    Route::get('/daftar', [RegisterController::class, 'showRegistrationForm'])->name('student.register');
+    Route::post('/daftar', [RegisterController::class, 'register'])->name('student.register.submit');
+});
 Route::post('/logout-siswa', [StudentAuthController::class, 'logout'])->name('student.logout');
-Route::get('/daftar', [RegisterController::class, 'showRegistrationForm'])->name('student.register');
-Route::post('/daftar', [RegisterController::class, 'register'])->name('student.register.submit');
 
 // Halaman Login Admin
-Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
-Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+Route::middleware('guest:admin')->group(function () {
+    Route::get('admin/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+});
 Route::post('admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 // Halaman Login Guru
-Route::get('/guru/login', [GuruLoginController::class, 'showLoginForm'])->name('guru.login');
-Route::post('/guru/login', [GuruLoginController::class, 'login'])->name('guru.login.submit');
+Route::middleware('guest:guru')->group(function () {
+    Route::get('/guru/login', [GuruLoginController::class, 'showLoginForm'])->name('guru.login');
+    Route::post('/guru/login', [GuruLoginController::class, 'login'])->name('guru.login.submit');
+});
 
-Route::prefix('admin')->group(function () {
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
     Route::post('/programs', [ProgramController::class, 'store'])->name('programs.store');
@@ -68,7 +74,7 @@ Route::prefix('admin')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('admin.profile.update');
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth:web'])->group(function () {
     Route::get('/dashboard-siswa', [StudentDashboardController::class, 'index'])->name('student.dashboard');
     Route::post('/upload-bukti/{id}', [StudentDashboardController::class, 'uploadBukti'])->name('student.upload.bukti');
     Route::get('/program-saya', [StudentProgramController::class, 'index'])->name('student.program');
@@ -88,5 +94,4 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'role:guru'])->prefix('guru')->name('guru.')->group(function () {
     Route::get('/dashboard', [GuruDashboardController::class, 'index'])->name('dashboard');
-    Route::resource('material', GuruMaterialController::class)->except(['create', 'edit']);
 });
