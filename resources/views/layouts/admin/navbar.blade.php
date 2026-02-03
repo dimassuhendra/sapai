@@ -12,25 +12,24 @@
 
         <div class="ms-auto">
             <div class="dropdown">
-                <button class="btn profile-dropdown-toggle border-0"
-                    type="button"
-                    id="userDropdown"
-                    data-bs-toggle="dropdown"
-                    data-bs-offset="0,15"
-                    aria-expanded="false">
-
+                <button class="btn profile-dropdown-toggle border-0" type="button" id="userDropdown" data-bs-toggle="dropdown">
                     @php
                     $userNama = auth()->user()->nama_lengkap ?? 'Admin';
                     $inisial = strtoupper(substr($userNama, 0, 1));
+                    // Pastikan foto_profil tidak null dan file-nya ada (opsional)
                     $hasPhoto = !empty(auth()->user()->foto_profil);
                     @endphp
 
-                    <div class="profile-container text-white">
+                    <div class="d-flex align-items-center text-white">
                         @if($hasPhoto)
-                        <img src="{{ asset('storage/avatars/' . auth()->user()->foto_profil) }}" class="profile-img border border-2 border-white">
+                        <img src="{{ asset('storage/avatars/' . auth()->user()->foto_profil) }}"
+                            class="rounded-circle border border-2 border-white"
+                            style="width: 35px; height: 35px; object-fit: cover;">
                         @else
-                        <div class="avatar-initial bg-white text-info fw-bold">{{ $inisial }}</div>
+                        <img src="https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->nama_lengkap) }}&background=fff&color=4f46e5&bold=true"
+                            alt="Avatar" width="40" height="40" class="rounded-circle border border-2 border-white-50">
                         @endif
+
                         <span class="d-none d-md-inline-block fw-bold ms-2">{{ $userNama }}</span>
                         <i class="fas fa-chevron-down ms-1 small opacity-75"></i>
                     </div>

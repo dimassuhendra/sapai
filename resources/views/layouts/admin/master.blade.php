@@ -97,6 +97,17 @@
                 margin-left: -250px;
             }
         }
+
+        .avatar-initial {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            /* Membuat jadi lingkaran */
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 
